@@ -52,11 +52,11 @@ def create_mimic_dict(filename):
     prev_word = ''
     for word in words:
         if prev_word not in mimic_dict:
-            mimic_dict[prev_word] = [word] 
+            mimic_dict[prev_word] = [word]
         else:
             mimic_dict[prev_word].append(word)
         prev_word = word
-    return mimic_dict    
+    return mimic_dict
 
 
 def print_mimic_random(mimic_dict, num_words):
@@ -69,25 +69,24 @@ def print_mimic_random(mimic_dict, num_words):
         - Repeat this process num_words times
     """
     word = ''
-    for _ in range(num_words):
+    for _ in range(num_words + 1):
         print(word, end=' ')
         nexts = mimic_dict.get(word)
-        if not nexts:
+        if nexts is None:
             nexts = mimic_dict['']
         word = random.choice(nexts)
 
     # with open(mimic_dict, num_words) as f:
     #   text = f.read()
     #   words = text.split()
-    # previous_word = ''  
+    # previous_word = ''
     # for word in words:
     #   if previous_word not in d:
     #     d[previous_word] = [word]
     #   else:
     #       d[previous_word].append(word)
     #   previous_word = word
-    # return d  
-    
+    # return d
 
 
 def main(args):
